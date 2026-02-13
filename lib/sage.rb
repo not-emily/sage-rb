@@ -6,6 +6,7 @@ require_relative "sage/configuration"
 require_relative "sage/response"
 require_relative "sage/chunk"
 require_relative "sage/providers/base"
+require_relative "sage/providers/openai"
 require_relative "sage/client"
 
 module Sage
@@ -26,5 +27,7 @@ module Sage
     end
   end
 end
+
+Sage::Client.register_provider(:openai, Sage::Providers::OpenAI)
 
 require_relative "sage/railtie" if defined?(Rails::Railtie)
