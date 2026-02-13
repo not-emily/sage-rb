@@ -8,6 +8,7 @@ require_relative "sage/chunk"
 require_relative "sage/providers/base"
 require_relative "sage/providers/openai"
 require_relative "sage/providers/anthropic"
+require_relative "sage/providers/ollama"
 require_relative "sage/client"
 
 module Sage
@@ -31,5 +32,6 @@ end
 
 Sage::Client.register_provider(:openai, Sage::Providers::OpenAI)
 Sage::Client.register_provider(:anthropic, Sage::Providers::Anthropic)
+Sage::Client.register_provider(:ollama, Sage::Providers::Ollama)
 
 require_relative "sage/railtie" if defined?(Rails::Railtie)
