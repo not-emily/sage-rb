@@ -1,18 +1,17 @@
 # Project Progress - sage-rb
 
 ## Plan Files
-Roadmap: [plan.md](../docs/plan/plan.md)
-Current Phase: [phase-7.md](../docs/plan/phases/phase-7.md)
+Roadmap: None
+Current Phase: None
 Latest Weekly Report: None
 
 Last Updated: 2026-02-13
 
 ## Current Focus
-Building the sage-rb gem — a unified LLM adapter for Ruby/Rails. Phases 1-6 complete (core gem functional), ready for Phase 7 (Rails integration).
+All 8 phases complete! sage-rb gem is fully built with providers, profiles, Rails integration, and documentation.
 
 ## Active Tasks
-- [NEXT] Phase 7: Rails Integration
-- [NEXT] Phase 8: Documentation
+None — all phases complete.
 
 ## Open Questions/Blockers
 None
@@ -63,6 +62,21 @@ None
   - Conditional default profile (production vs development pattern)
   - All error cases validated (ProfileNotFound, NoDefaultProfile, ProviderNotConfigured)
   - 77 passing tests
+- Phase 7: Rails Integration
+  - Sage::Railtie loads conditionally via `if defined?(Rails::Railtie)`
+  - Install generator for `rails generate sage:install`
+  - Initializer template with commented examples for all providers and profiles
+  - Template validated as valid Ruby with all config lines commented out
+  - 84 passing tests
+- Phase 8: Documentation
+  - Full README with quickstart guides (Rails + plain Ruby)
+  - Configuration docs (providers, profiles, environment-based defaults)
+  - Usage docs (blocking, streaming, per-call overrides, system prompts)
+  - Providers reference table with notes
+  - Error handling guide with all error classes
+  - Response objects API reference
+  - Relationship to sage Go CLI documented
+  - Fixed gemspec and CLAUDE.md GitHub URLs to not-emily org
 
 ## Next Session
-Start Phase 7: Rails Integration — Railtie, install generator, initializer template.
+All phases complete. Consider archiving the plan and publishing the gem.

@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Emily"]
   spec.summary = "Unified LLM adapter for Ruby"
   spec.description = "A lightweight, provider-agnostic interface for calling LLM APIs (OpenAI, Anthropic, Ollama) from any Ruby application."
-  spec.homepage = "https://github.com/pxp/sage-rb"
+  spec.homepage = "https://github.com/not-emily/sage-rb"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.0.0"
 

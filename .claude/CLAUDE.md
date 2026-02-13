@@ -3,7 +3,7 @@
 This file provides context for Claude Code sessions.
 
 ## Project Overview
-sage-rb is a Ruby gem that provides a unified interface for calling multiple LLM providers (OpenAI, Anthropic, Ollama) from any Ruby application. It is a companion to [sage](https://github.com/pxp/sage), the Go CLI/library, sharing the same concepts (providers, profiles, complete) but implemented natively in Ruby.
+sage-rb is a Ruby gem that provides a unified interface for calling multiple LLM providers (OpenAI, Anthropic, Ollama) from any Ruby application. It is a companion to [sage](https://github.com/not-emily/sage), the Go CLI/library, sharing the same concepts (providers, profiles, complete) but implemented natively in Ruby.
 
 ## Tech Stack
 - Ruby 3.0+ (stdlib only, no runtime dependencies)
