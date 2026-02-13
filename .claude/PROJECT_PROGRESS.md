@@ -2,18 +2,15 @@
 
 ## Plan Files
 Roadmap: [plan.md](../docs/plan/plan.md)
-Current Phase: [phase-4.md](../docs/plan/phases/phase-4.md)
+Current Phase: [phase-7.md](../docs/plan/phases/phase-7.md)
 Latest Weekly Report: None
 
 Last Updated: 2026-02-13
 
 ## Current Focus
-Building the sage-rb gem — a unified LLM adapter for Ruby/Rails. Phases 1-3 complete, ready for Phase 4 (Anthropic provider).
+Building the sage-rb gem — a unified LLM adapter for Ruby/Rails. Phases 1-6 complete (core gem functional), ready for Phase 7 (Rails integration).
 
 ## Active Tasks
-- [NEXT] Phase 4: Anthropic Provider
-- [NEXT] Phase 5: Ollama Provider
-- [NEXT] Phase 6: Profiles
 - [NEXT] Phase 7: Rails Integration
 - [NEXT] Phase 8: Documentation
 
@@ -44,6 +41,28 @@ None
   - Error mapping (401 AuthenticationError, 429/500 ProviderError)
   - Verified working against live OpenAI API
   - 39 passing tests
+- Phase 4: Anthropic Provider
+  - Full Anthropic adapter with event-based SSE streaming
+  - System as separate field, x-api-key + anthropic-version headers
+  - Default max_tokens of 1024, configurable base_url
+  - Compared against Go implementation, fixed content extraction (first block only)
+  - Fixed base_url empty string handling in both OpenAI and Anthropic
+  - 50 passing tests
+- Phase 5: Ollama Provider
+  - Full Ollama adapter with newline-delimited JSON streaming
+  - Optional authentication (Bearer token only when key provided)
+  - Connection refused handling with helpful error message
+  - In-response error checking (even on 200 status)
+  - Compared against Go implementation — full parity, no differences
+  - Verified working against live Ollama server
+  - 63 passing tests
+- Phase 6: Profiles
+  - Profile data object tests (name/provider/model/params, type coercion)
+  - End-to-end integration tests with mock providers
+  - Named profiles, default profile fallback, per-call overrides
+  - Conditional default profile (production vs development pattern)
+  - All error cases validated (ProfileNotFound, NoDefaultProfile, ProviderNotConfigured)
+  - 77 passing tests
 
 ## Next Session
-Start Phase 4: Anthropic Provider — event-based streaming, system as separate field.
+Start Phase 7: Rails Integration — Railtie, install generator, initializer template.

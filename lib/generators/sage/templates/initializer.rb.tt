@@ -1,0 +1,23 @@
+# frozen_string_literal: true
+
+Sage.configure do |config|
+  # === Providers ===
+  # Register your LLM providers with their credentials.
+  # API keys should come from Rails credentials or environment variables.
+
+  # config.provider :openai, api_key: Rails.application.credentials.dig(:openai, :api_key)
+  # config.provider :anthropic, api_key: Rails.application.credentials.dig(:anthropic, :api_key)
+  # config.provider :ollama, endpoint: "http://localhost:11434"
+
+  # === Profiles ===
+  # Profiles are named combinations of provider + model + parameters.
+  # Use them to switch between models without changing application code.
+
+  # config.profile :default, provider: :openai, model: "gpt-4o"
+  # config.profile :fast, provider: :ollama, model: "hermes3"
+  # config.profile :creative, provider: :anthropic, model: "claude-sonnet-4-5-20250929",
+  #                temperature: 0.9
+
+  # === Default Profile ===
+  # config.default_profile :default
+end
