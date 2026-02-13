@@ -34,6 +34,7 @@ module Sage
         uri = endpoint_uri
 
         Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+          http.verify_mode = OpenSSL::SSL::VERIFY_PEER
           request = build_http_request(uri, body)
 
           http.request(request) do |response|
@@ -106,6 +107,7 @@ module Sage
         uri = endpoint_uri
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_PEER
         http.read_timeout = 300
 
         request = build_http_request(uri, body)

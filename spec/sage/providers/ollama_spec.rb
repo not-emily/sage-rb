@@ -40,6 +40,7 @@ RSpec.describe Sage::Providers::Ollama do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
       allow(http).to receive(:request).and_return(stub_completion_response)
 
@@ -55,6 +56,7 @@ RSpec.describe Sage::Providers::Ollama do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
 
       captured_body = nil
@@ -79,6 +81,7 @@ RSpec.describe Sage::Providers::Ollama do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
       allow(http).to receive(:request).and_return(response)
 
@@ -98,6 +101,7 @@ RSpec.describe Sage::Providers::Ollama do
 
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:start).and_yield(http)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:request).and_yield(response)
 
       received = []
@@ -119,6 +123,7 @@ RSpec.describe Sage::Providers::Ollama do
 
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:start).and_yield(http)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:request).and_yield(response)
 
       received = []
@@ -137,6 +142,7 @@ RSpec.describe Sage::Providers::Ollama do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
 
       captured_headers = nil
@@ -156,6 +162,7 @@ RSpec.describe Sage::Providers::Ollama do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
 
       captured_auth = nil
@@ -177,6 +184,7 @@ RSpec.describe Sage::Providers::Ollama do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).with("remote-server", 8080).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
       allow(http).to receive(:request).and_return(stub_completion_response)
 
@@ -190,6 +198,7 @@ RSpec.describe Sage::Providers::Ollama do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
 
       captured_path = nil
@@ -208,6 +217,7 @@ RSpec.describe Sage::Providers::Ollama do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).with("localhost", 11434).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
       allow(http).to receive(:request).and_return(stub_completion_response)
 
@@ -221,6 +231,7 @@ RSpec.describe Sage::Providers::Ollama do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
       allow(http).to receive(:request).and_raise(Errno::ECONNREFUSED)
 
@@ -241,6 +252,7 @@ RSpec.describe Sage::Providers::Ollama do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
       allow(http).to receive(:request).and_return(stub_error_response(500, error_message: "internal error"))
 

@@ -224,6 +224,28 @@ chunk.content          # String — text fragment
 chunk.done?            # Boolean — true for the final chunk
 ```
 
+## Security
+
+sage-rb never stores credentials — API keys are received as strings and passed directly to provider HTTP headers.
+
+### Provider URLs
+
+The `base_url` and `endpoint` configuration options control where HTTP requests are sent. These must only come from trusted sources:
+
+```ruby
+# Safe — from environment or Rails credentials
+config.provider :openai,
+  api_key: ENV["OPENAI_API_KEY"],
+  base_url: ENV["OPENAI_BASE_URL"]
+
+# Unsafe — NEVER use user input for provider URLs
+config.provider :openai,
+  api_key: current_user.api_key,
+  base_url: params[:base_url]  # DO NOT do this
+```
+
+Allowing user-controlled URLs could enable Server-Side Request Forgery (SSRF) against internal services.
+
 ## Relationship to sage
 
 sage-rb is a companion to [sage](https://github.com/not-emily/sage), the Go CLI and library. They share the same core concepts:

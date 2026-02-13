@@ -45,6 +45,7 @@ RSpec.describe Sage::Providers::Anthropic do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
       allow(http).to receive(:request).and_return(stub_completion_response)
 
@@ -60,6 +61,7 @@ RSpec.describe Sage::Providers::Anthropic do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
 
       captured_body = nil
@@ -80,6 +82,7 @@ RSpec.describe Sage::Providers::Anthropic do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
 
       captured_body = nil
@@ -97,6 +100,7 @@ RSpec.describe Sage::Providers::Anthropic do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
 
       captured_headers = nil
@@ -120,6 +124,7 @@ RSpec.describe Sage::Providers::Anthropic do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
 
       captured_body = nil
@@ -156,6 +161,7 @@ RSpec.describe Sage::Providers::Anthropic do
 
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:start).and_yield(http)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:request).and_yield(response)
 
       chunks = []
@@ -184,6 +190,7 @@ RSpec.describe Sage::Providers::Anthropic do
 
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:start).and_yield(http)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:request).and_yield(response)
 
       chunks = []
@@ -200,6 +207,7 @@ RSpec.describe Sage::Providers::Anthropic do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
       allow(http).to receive(:request).and_return(stub_error_response(401, message: "Invalid API key"))
 
@@ -211,6 +219,7 @@ RSpec.describe Sage::Providers::Anthropic do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
       allow(http).to receive(:request).and_return(stub_error_response(429, message: "Rate limit exceeded"))
 
@@ -222,6 +231,7 @@ RSpec.describe Sage::Providers::Anthropic do
       http = instance_double(Net::HTTP)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
+      allow(http).to receive(:verify_mode=)
       allow(http).to receive(:read_timeout=)
       allow(http).to receive(:request).and_return(stub_error_response(500, message: "Server error"))
 

@@ -31,7 +31,9 @@ module Sage
         body = build_request_body(model, prompt, system, stream: true, **params)
         uri = endpoint_uri
 
-        Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https") do |http|
+        ssl = uri.scheme == "https"
+        Net::HTTP.start(uri.host, uri.port, use_ssl: ssl) do |http|
+          http.verify_mode = OpenSSL::SSL::VERIFY_PEER if ssl
           request = build_http_request(uri, body)
 
           http.request(request) do |response|
@@ -95,7 +97,9 @@ module Sage
       def post(body)
         uri = endpoint_uri
         http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = uri.scheme == "https"
+        ssl = uri.scheme == "https"
+        http.use_ssl = ssl
+        http.verify_mode = OpenSSL::SSL::VERIFY_PEER if ssl
         http.read_timeout = 300
 
         request = build_http_request(uri, body)
