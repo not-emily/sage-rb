@@ -2,16 +2,15 @@
 
 ## Plan Files
 Roadmap: [plan.md](../docs/plan/plan.md)
-Current Phase: [phase-3.md](../docs/plan/phases/phase-3.md)
+Current Phase: [phase-4.md](../docs/plan/phases/phase-4.md)
 Latest Weekly Report: None
 
 Last Updated: 2026-02-13
 
 ## Current Focus
-Building the sage-rb gem — a unified LLM adapter for Ruby/Rails. Phases 1-2 complete, ready for Phase 3 (OpenAI provider).
+Building the sage-rb gem — a unified LLM adapter for Ruby/Rails. Phases 1-3 complete, ready for Phase 4 (Anthropic provider).
 
 ## Active Tasks
-- [NEXT] Phase 3: OpenAI Provider
 - [NEXT] Phase 4: Anthropic Provider
 - [NEXT] Phase 5: Ollama Provider
 - [NEXT] Phase 6: Profiles
@@ -38,6 +37,13 @@ None
   - Error hierarchy (ProfileNotFound, ProviderNotConfigured, NoDefaultProfile, etc.)
   - Sage.complete top-level method wired to client
   - 24 passing tests (mock provider verifies full blocking + streaming flow)
+- Phase 3: OpenAI Provider
+  - Full OpenAI adapter with blocking and SSE streaming
+  - Model-specific max_completion_tokens handling (o1, o3, gpt-4o, gpt-5)
+  - Custom base_url support for OpenAI-compatible APIs
+  - Error mapping (401 AuthenticationError, 429/500 ProviderError)
+  - Verified working against live OpenAI API
+  - 39 passing tests
 
 ## Next Session
-Start Phase 3: OpenAI Provider — first real provider adapter with SSE streaming.
+Start Phase 4: Anthropic Provider — event-based streaming, system as separate field.
